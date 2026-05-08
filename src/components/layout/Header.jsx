@@ -12,7 +12,7 @@ const Header = ({ onOpenModal, theme, toggleTheme }) => {
             <BookOpen className="text-white" size={20} />
           </div>
           <span className="font-black text-lg tracking-tight text-slate-800 dark:text-white">
-            biblio<span className="text-indigo-600">Mobile</span>
+            Biblio<span className="text-indigo-600"> mobile</span> - Tus libros, tus lecturas, tu señalador!
           </span>
         </div>
 

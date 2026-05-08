@@ -2,8 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Esto asegura que el fondo cambie suavemente y ocupe toda la pantalla */
 @layer base {
+  html {
+    @apply h-full;
+  }
   body {
-    @apply transition-colors duration-300;
+    @apply min-h-full transition-colors duration-300;
   }
 }

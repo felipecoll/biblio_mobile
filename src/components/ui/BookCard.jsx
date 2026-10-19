@@ -1,5 +1,5 @@
 import React from 'react';
-import { Trash2, Edit3, Star, BookOpen, CheckCircle2, Bookmark, Calendar } from 'lucide-react';
+import { Trash2, Edit3, Star, BookOpen, CheckCircle2, Bookmark, Calendar, StickyNote } from 'lucide-react';
 
 const BookCard = ({ book, onEdit, onDelete }) => {
   // Mapeo de estados con colores y texturas sutiles
@@ -85,24 +85,30 @@ const BookCard = ({ book, onEdit, onDelete }) => {
 
         {/* Footer de la Card */}
         <div className="mt-auto pt-2 border-t border-slate-100 dark:border-slate-800/50 flex items-center justify-between">
-          {/* Rating */}
-          <div className="flex gap-0.5">
-            {[...Array(5)].map((_, i) => (
-              <Star 
-                key={i} 
-                size={10} 
-                className={i < (book.rating || 0) ? "fill-yellow-400 text-yellow-400" : "text-slate-200 dark:text-slate-700"} 
-              />
-            ))}
-          </div>
+  <div className="flex gap-0.5">
+    {[...Array(5)].map((_, i) => (
+      <Star 
+        key={i} 
+        size={10} 
+        className={i < (book.rating || 0) ? "fill-yellow-400 text-yellow-400" : "text-slate-200 dark:text-slate-700"} 
+      />
+    ))}
+  </div>
 
-          {/* Páginas */}
-          <div className="bg-slate-100 dark:bg-slate-800/50 px-2 py-0.5 rounded-md">
-            <span className="text-[9px] font-black text-slate-500 dark:text-slate-400">
-              {book.pages || 0} PP
-            </span>
-          </div>
-        </div>
+  <div className="flex items-center gap-2">
+    {book.notes && book.notes.length > 0 && (
+      <span className="inline-flex items-center gap-1 text-[9px] font-bold text-indigo-500 bg-indigo-50 dark:bg-indigo-500/10 px-1.5 py-0.5 rounded-md">
+        <StickyNote size={10} />
+        {book.notes.length}
+      </span>
+    )}
+    <div className="bg-slate-100 dark:bg-slate-800/50 px-2 py-0.5 rounded-md">
+      <span className="text-[9px] font-black text-slate-500 dark:text-slate-400">
+        {book.pages || 0} PP
+      </span>
+    </div>
+  </div>
+</div>
       </div>
     </div>
   );

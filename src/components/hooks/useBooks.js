@@ -18,32 +18,30 @@ export const useBooks = () => {
   useEffect(() => { fetchBooks(); }, []);
 
   const saveBook = async (bookData) => {
-    // 1. Mapeamos los nombres de los campos de React a Supabase (PostgreSQL)
     const payload = {
       title: bookData.title,
       author: bookData.author,
       pages: parseInt(bookData.pages) || 0,
       status: bookData.status,
       rating: parseInt(bookData.rating) || 0,
-      cover_url: bookData.coverUrl, // <--- Aquí estaba el error 400 casi seguro
-      start_date: bookData.startDate || null,
-      end_date: bookData.endDate || null
+      cover_url: bookData.coverUrl || bookData.cover_url,
+      start_date: bookData.startDate || bookData.start_date || null,
+      end_date: bookData.endDate || bookData.end_date || null,
+      notes: bookData.notes || [] // <--- Incluimos el array de notas
     };
 
     try {
       if (bookData.id && typeof bookData.id === 'string' && bookData.id.length > 20) {
-        // UPDATE
         const { error } = await supabase.from('books').update(payload).eq('id', bookData.id);
         if (error) throw error;
       } else {
-        // INSERT
         const { error } = await supabase.from('books').insert([payload]);
         if (error) throw error;
       }
       await fetchBooks();
     } catch (err) {
-      console.error("Error real de Supabase:", err.message);
-      alert("Error: " + err.message);
+      console.error("Error en Supabase:", err.message);
+      alert("Error al guardar: " + err.message);
     }
   };
 

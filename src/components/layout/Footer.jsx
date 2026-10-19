@@ -14,12 +14,12 @@ const Footer = () => {
         </div>
 
         {/* Cambiamos el <p> por <div> para evitar el error de anidamiento */}
-        <div className="flex items-center gap-2">
+        {/* <div className="flex items-center gap-2">
           <div className="text-xs font-bold text-slate-500 dark:text-slate-400">
             {new Date().getFullYear()}
           </div>
-          <Heart size={12} className="text-red-500/50 fill-red-500/50" />
-        </div>
+          <Heart size={12} className="text-red-500/50 fill-red-500/50" /> 
+        </div> */}
 
       </div>
     </footer>

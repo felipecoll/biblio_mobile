@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="flex items-center gap-2">
           <BookOpen className="text-indigo-600/40" size={18} />
           <span className="font-black text-sm tracking-tighter text-slate-400 dark:text-slate-500 uppercase">
-            Biblio<span className="text-indigo-600/60">Mobile</span>
+            Biblio <span className="text-indigo-600/60">Mobile</span> - Tus libros, tu biblioteca, siempre organizada.
           </span>
         </div>
 
